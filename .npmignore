@@ -1,5 +1,3 @@
 .DS_Store
-gulpfile.js
 /node_modules
 /coverage
-/test
