@@ -10,7 +10,13 @@
     "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha tests/*.js",
     "travis": "npm run test && npm run karma:travis"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:rm3web/sitepath.git"
+  },
+  "bugs": { "url" : "https://github.com/rm3web/sitepath/issues"},
+  "homepage": "https://github.com/rm3web/sitepath",
+  "author": "Wirehead <wh-npm@wirewd.com>",
   "license": "BSD-2-Clause",
   "devDependencies": {
     "chai": "^3.4.1",
