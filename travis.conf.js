@@ -8,15 +8,42 @@ module.exports = function(config) {
       base: 'SauceLabs',
       browserName: 'chrome'
     },
-    'SL_InternetExplorer': {
+    'SL_InternetExplorer_8': {
+      base: 'SauceLabs',
+      browserName: 'internet explorer',
+      version: '8'
+    },
+    'SL_InternetExplorer_9': {
+      base: 'SauceLabs',
+      browserName: 'internet explorer',
+      version: '9'
+    },
+    'SL_InternetExplorer_10': {
       base: 'SauceLabs',
       browserName: 'internet explorer',
       version: '10'
     },
+    'SL_InternetExplorer_11': {
+      base: 'SauceLabs',
+      browserName: 'internet explorer',
+      version: '11'
+    },
     'SL_FireFox': {
       base: 'SauceLabs',
       browserName: 'firefox',
-    }
+    },
+    'SL_iOS_safari': {
+      base: 'SauceLabs',
+      browserName: 'iphone',
+      platform: 'OS X 10.9',
+      version: '9.1'
+    },
+    'sl_Android_Chrome': {
+      base: 'SauceLabs',
+      browserName: 'android',
+      platform: 'Linux',
+      version: '5.1'
+    },
   };
 
   config.set({
