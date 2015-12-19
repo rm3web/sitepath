@@ -8,11 +8,6 @@ module.exports = function(config) {
       base: 'SauceLabs',
       browserName: 'chrome'
     },
-    'SL_InternetExplorer_8': {
-      base: 'SauceLabs',
-      browserName: 'internet explorer',
-      version: '8'
-    },
     'SL_InternetExplorer_9': {
       base: 'SauceLabs',
       browserName: 'internet explorer',
@@ -112,10 +107,6 @@ module.exports = function(config) {
     concurrency: Infinity,
 
     sauceLabs: {
-      testName: 'Karma and Sauce Labs demo'
-    },
-
-    sauceLabs: {
       testName: 'SitePath Unit Tests',
       tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
       username: process.env.SAUCE_USERNAME,
@@ -127,7 +118,7 @@ module.exports = function(config) {
       }
     },
 
-    captureTimeout: 120000,
+    captureTimeout: 0,
     customLaunchers: customLaunchers,
   })
 }
