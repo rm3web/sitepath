@@ -1,6 +1,24 @@
 // Karma configuration
 
 module.exports = function(config) {
+
+  // Browsers to run on Sauce Labs
+  var customLaunchers = {
+    'SL_Chrome': {
+      base: 'SauceLabs',
+      browserName: 'chrome'
+    },
+    'SL_InternetExplorer': {
+      base: 'SauceLabs',
+      browserName: 'internet explorer',
+      version: '10'
+    },
+    'SL_FireFox': {
+      base: 'SauceLabs',
+      browserName: 'firefox',
+    }
+  };
+
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -33,7 +51,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress',  'saucelabs'],
 
 
     // web server port
@@ -55,7 +73,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers: Object.keys(customLaunchers),
 
 
     // Continuous Integration mode
@@ -66,5 +84,10 @@ module.exports = function(config) {
     // how many browser should be started simultanous
     concurrency: Infinity,
 
+    sauceLabs: {
+      testName: 'Karma and Sauce Labs demo'
+    },
+    captureTimeout: 120000,
+    customLaunchers: customLaunchers,
   })
 }
