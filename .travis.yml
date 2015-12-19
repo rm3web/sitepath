@@ -12,4 +12,4 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
-script: "sc --doctor && npm run travis"
+script: "npm run travis"

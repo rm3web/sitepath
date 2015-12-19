@@ -87,6 +87,19 @@ module.exports = function(config) {
     sauceLabs: {
       testName: 'Karma and Sauce Labs demo'
     },
+
+    sauceLabs: {
+      testName: 'SitePath Unit Tests',
+      tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
+      username: process.env.SAUCE_USERNAME,
+      accessKey: process.env.SAUCE_ACCESS_KEY,
+      startConnect: false,
+      connectOptions: {
+        port: 5757,
+        logfile: 'sauce_connect.log'
+      }
+    },
+
     captureTimeout: 120000,
     customLaunchers: customLaunchers,
   })
