@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha tests/*.js",
-    "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha tests/*.js"
+    "karma": "./node_modules/.bin/karma start",
+    "karma:travis": "./node_modules/.bin/karma start travis.conf.js",
+    "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha tests/*.js",
+    "travis": "npm run test && npm run karma:travis"
   },
   "author": "",
   "license": "BSD-2-Clause",
