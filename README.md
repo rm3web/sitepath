@@ -23,6 +23,8 @@ function pathMap() {
 }
 ```
 
+For further documentation, see [docs](docs.md)
+
 ## Contributing
 
 If you've found a bug:
