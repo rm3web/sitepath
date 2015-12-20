@@ -50,19 +50,14 @@ describe('sitepath', function() {
       should.not.exist(p.page);
       should.not.exist(p.partial);
     });
-  });
 
-  describe('#fromDottedPath()', function() {
-    it('works', function() {
-      var p = new sitepath();
-      var p2 = new sitepath();
-      p._fromDottedPath();
-      p2._fromDottedPath('wh.bleh');
+    it('works from a dotted path', function() {
+      var p = new sitepath('wh.bleh');
 
-      p.path.should.eql([]);
-      p2.path.should.eql(['wh', 'bleh']);
+      p.path.should.eql(['wh', 'bleh']);
     });
   });
+
   describe('#jsonSerialize()', function() {
     it('works', function() {
       var p = new sitepath(['wh', 'hat'], ['test']);
@@ -118,56 +113,47 @@ describe('sitepath', function() {
   describe('#fromUrlSegment()', function() {
     it('works', function() {
 
-      var p = new sitepath();
-      p.fromUrlSegment('/wh/suck');
+      var p = sitepath.fromUrlSegment('/wh/suck');
       p.path.should.eql(['wh', 'suck']);
 
-      var p2 = new sitepath();
-      p2.fromUrlSegment('/wh/suck/');
+      var p2 = sitepath.fromUrlSegment('/wh/suck/');
       p2.path.should.eql(['wh', 'suck']);
     });
 
     it('works with a prefix', function() {
-      var p = new sitepath();
-
-      p.fromUrlSegment('/suck', ['wh']);
+      var p = sitepath.fromUrlSegment('/suck', ['wh']);
       p.path.should.eql(['wh', 'suck']);
     });
 
     it('works with a bad segment', function() {
-      var p = new sitepath();
-
-      p.fromUrlSegment('//suck///');
+      var p = sitepath.fromUrlSegment('//suck///');
       p.path.should.eql(['suck']);
     });
 
     it('works with a file path', function() {
-      var p = new sitepath();
+      var p = sitepath.fromUrlSegment('/suck/blah.html');
 
-      p.fromUrlSegment('/suck/blah.html');
       p.path.should.eql(['suck']);
       p.page.should.eql('blah.html');
     });
 
     it('works with a partial', function() {
-      var p = new sitepath();
-
-      p.fromUrlSegment('/suck/$/offset/15');
+      var p = sitepath.fromUrlSegment('/suck/$/offset/15');
       p.path.should.eql(['suck']);
       should.not.exist(p.page);
       p.partial.should.eql(['offset', '15']);
 
-      p.fromUrlSegment('/suck/blah.txt/$/offset/15');
+      p = sitepath.fromUrlSegment('/suck/blah.txt/$/offset/15');
       p.path.should.eql(['suck']);
       p.page.should.eql('blah.txt');
       p.partial.should.eql(['offset', '15']);
     });
 
     it('throws when there\'s an invalid string', function() {
-      var p = new sitepath();
+      
 
       (function() {
-        p.fromUrlSegment('/suck/bla-.html');
+        var p = sitepath.fromUrlSegment('/suck/bla-.html');
       }).should.throw('validation error');
     });
   });

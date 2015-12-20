@@ -5,6 +5,15 @@ if (!Array.isArray) {
   };
 }
 
+/**
+ * A Site Path object
+ * @param {string | SitePath | Object | undefined} path will copy a SitePath, 
+ *  convert an array into a SitePath, convert a dotted-string serialized ltree 
+ *  into a sitepath, accept an Object with path, partial, and page keys, or
+ *  construct an empty SitePath.
+ * @constructor
+ */
+
 var SitePath = function(path) {
   this.path = undefined;
   this.partial = undefined;
@@ -37,14 +46,32 @@ var SitePath = function(path) {
   }
 };
 
+/**
+ * Returns the outermost 'leaf' component of the path.
+ * (e.g. the leaf of `a.b.c` is going to be `c`)
+ * @returns {string} the leaf node.
+ */
 SitePath.prototype.leaf = function() {
   return this.path[this.path.length - 1];
 };
 
-SitePath.prototype.jsonSerialize = function() {
+/**
+ * Serializes just the path into an array (e.g. no partial or page)
+ * @returns {Array} the path, as an array
+ */
+SitePath.prototype.pathArray = function() {
   return this.path.slice(0);
 };
 
+/**
+ * Serializes just the path.  (e.g. no partial or page)
+ * @param {string} prefix The prefix, to be prepended to the url, e.g. 
+ *  'http://www.example.com/'
+ * @param {Number} spl How many nodes to lop off the front of the url 
+ *  (0 or blank means put every path -- e.g. a.b.c becomes /a/b/c/.  1 means 
+ *   a.b.c becomes /b/c/)
+ * @returns {string} the path, as a URL
+ */
 SitePath.prototype.toUrl = function(prefix, spl) {
   var pathSegment = this.path.slice(spl);
   var str = prefix + pathSegment.join('/');
@@ -55,14 +82,28 @@ SitePath.prototype.toUrl = function(prefix, spl) {
   }
 };
 
+/**
+ * Serializes just the path seperated by dots, as PostgreSQL's ltree type expects
+ * @returns {string} the path, separated by dots
+ */
 SitePath.prototype.toDottedPath = function() {
   return this.path.join('.');
 };
 
+/**
+ * Returns the parent path of the current path (e.g. up from `a.b.c` returns `a.b`)
+ * @returns {SitePath} the parent path
+ */
 SitePath.prototype.up = function() {
   return new SitePath(this.path.slice(0, -1));
 };
 
+/**
+ * Returns the child path of the current path (e.g. down('c') 
+ *  from `a.b` returns `a.b.c`)
+ * @param {string} added The path to be added to the end
+ * @returns {SitePath} the child path
+ */
 SitePath.prototype.down = function(added) {
   return new SitePath(this.path.concat(added));
 };
@@ -77,22 +118,31 @@ SitePath.prototype._validatePathArray = function(pathArray) {
 }
 
 SitePath.prototype._fromDottedPath = function(url) {
-  if (url === undefined) {
-    this.path = [];
-  } else {
-    var pth = url.toLowerCase().split('.');
-    this._validatePathArray(pth);
-    this.path = pth;
-  }
+  var pth = url.toLowerCase().split('.');
+  this._validatePathArray(pth);
+  this.path = pth;
 };
 
-SitePath.prototype.fromUrlSegment = function(url, prefix) {
+/**
+ * Parses from a URL segment.
+ * @example
+ *  p = sitepath.fromUrlSegment('/cat', ['wh']);
+ *  // returns SitePath('wh.cat');
+ * @example
+ *  var p = sitepath.fromUrlSegment('/wh/cat');
+ *  // returns SitePath('wh.cat');
+ * @param {string} url 
+ * @param {Array} prefix The path to be added to the end
+ * @returns {SitePath} the child path
+ */
+SitePath.fromUrlSegment = function(url, prefix) {
+  var newPath = new SitePath();
   var arr = url.split('$'), pth;
   if (arr.length > 1) {
-    this.partial = arr[1].split('/').slice(1);
+    newPath.partial = arr[1].split('/').slice(1);
     url = arr[0];
   } else {
-    this.partial = undefined;
+    newPath.partial = undefined;
   }
   pth = url.toLowerCase().split('/');
   pth = pth.filter(function(v, i, o) {
@@ -104,15 +154,16 @@ SitePath.prototype.fromUrlSegment = function(url, prefix) {
   });
   var pagematch = /^\w+\.\w+$/;
   if (pagematch.test(pth.slice(-1))) {
-    this.page = pth.pop();
+    newPath.page = pth.pop();
   }
-  this._validatePathArray(pth);
+  newPath._validatePathArray(pth);
   if (prefix === undefined) {
-    this.path = [];
+    newPath.path = [];
   } else {
-    this.path = prefix;
+    newPath.path = prefix;
   }
-  this.path = this.path.concat(pth);
+  newPath.path = newPath.path.concat(pth);
+  return newPath;
 };
 
 module.exports = exports = SitePath;
