@@ -58,11 +58,11 @@ describe('sitepath', function() {
     });
   });
 
-  describe('#jsonSerialize()', function() {
+  describe('#pathArray()', function() {
     it('works', function() {
       var p = new sitepath(['wh', 'hat'], ['test']);
 
-      p.jsonSerialize().should.eql(['wh', 'hat']);
+      p.pathArray().should.eql(['wh', 'hat']);
     });
   });
 
