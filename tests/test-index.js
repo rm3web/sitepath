@@ -165,6 +165,13 @@ describe('sitepath', function() {
 
       p.should.eql(p2.down('hat'));
     });
+
+    it('works with arrays', function() {
+      var p = new sitepath(['wh', 'hat', 'cat']);
+      var p2 = new sitepath(['wh']);
+
+      p.should.eql(p2.down(['hat', 'cat']));
+    });
   });
 
 });
