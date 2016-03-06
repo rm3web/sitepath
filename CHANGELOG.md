@@ -15,5 +15,5 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - New project
 
-[Unreleased]: https://github.com/rm3web/rm3-react-controls/compare/v0.2.0...HEAD
-[0.2.0]: https://github.com/rm3web/rm3-react-controls/compare/v0.1.1...v0.2.0
+[Unreleased]: https://github.com/rm3web/sitepath/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/rm3web/sitepath/compare/v0.1.1...v0.2.0
