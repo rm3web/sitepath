@@ -22,7 +22,7 @@
   "author": "Wirehead <wh-npm@wirewd.com>",
   "license": "BSD-2-Clause",
   "devDependencies": {
-    "browserify": "^13.0.0",
+    "browserify": "^13.0.1",
     "chai": "^3.4.1",
     "documentation": "^3.0.4",
     "istanbul": "^0.4.1",
