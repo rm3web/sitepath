@@ -18,6 +18,10 @@
   "bugs": {
     "url": "https://github.com/rm3web/sitepath/issues"
   },
+  "engines": {
+    "node": "4.x || 5.x",
+    "npm": "2.x || 3.x"
+  },
   "homepage": "https://github.com/rm3web/sitepath",
   "author": "Wirehead <wh-npm@wirewd.com>",
   "license": "BSD-2-Clause",
