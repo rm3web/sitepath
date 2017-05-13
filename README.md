@@ -1,5 +1,7 @@
 # A self-describing URL path-like thing
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/rm3web/sitepath.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/rm3web/sitepath.svg?branch=master)](https://travis-ci.org/rm3web/sitepath)
 
 This is a URL mapping scheme and utility library designed around the [PostgreSQL ltree data type](http://www.postgresql.org/docs/current/static/ltree.html)
