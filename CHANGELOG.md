@@ -3,6 +3,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [0.2.1] - 2017-06-17
+
 ### Changed
 - Removed Node 0.12 support
 - Updated deps
@@ -18,5 +21,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - New project
 
-[Unreleased]: https://github.com/rm3web/sitepath/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/rm3web/sitepath/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/rm3web/sitepath/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/rm3web/sitepath/compare/v0.1.1...v0.2.0
