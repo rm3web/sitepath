@@ -27,7 +27,7 @@
   "license": "BSD-2-Clause",
   "devDependencies": {
     "browserify": "^14.3.0",
-    "chai": "^4.0.2",
+    "chai": "4.0.2",
     "documentation": "^3.0.4",
     "istanbul": "^0.4.1",
     "karma": "^1.1.0",
