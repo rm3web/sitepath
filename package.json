@@ -1,6 +1,6 @@
 {
   "name": "sitepath",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A self-describing URL path-like thing",
   "main": "index.js",
   "scripts": {
@@ -19,8 +19,8 @@
     "url": "https://github.com/rm3web/sitepath/issues"
   },
   "engines": {
-    "node": "4.x || 5.x",
-    "npm": "2.x || 3.x"
+    "node": "4.x || 5.x || 6.x || 8.x",
+    "npm": "2.x || 3.x || 4.x || 5.x"
   },
   "homepage": "https://github.com/rm3web/sitepath",
   "author": "Wirehead <wh-npm@wirewd.com>",
