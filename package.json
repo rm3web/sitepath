@@ -28,7 +28,7 @@
   "devDependencies": {
     "browserify": "^14.3.0",
     "chai": "^4.0.2",
-    "documentation": "^4.0.0",
+    "documentation": "^12.0.0",
     "istanbul": "^0.4.1",
     "karma": "^2.0.0",
     "karma-browserify": "^5.0.2",
