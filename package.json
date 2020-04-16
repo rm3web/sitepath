@@ -30,7 +30,7 @@
     "chai": "^4.0.2",
     "documentation": "^4.0.0",
     "istanbul": "^0.4.1",
-    "karma": "^2.0.0",
+    "karma": "^5.0.2",
     "karma-browserify": "^5.0.2",
     "karma-chrome-launcher": "^2.0.0",
     "karma-firefox-launcher": "^1.0.0",
